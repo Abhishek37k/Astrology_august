@@ -669,7 +669,7 @@
                   <div id="form_result">
 
                   </div>
-                  <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" id="contactForm1">
+                  <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" id="contactForm">
                      <input type="hidden" name="access_key" value="f7c8963e-b81b-442e-8841-236aaa885308">
                      <input type="hidden" name="recaptcha" value="your-recaptcha-token">
                      <input type="text" name="honeypot" style="display:none">
@@ -699,46 +699,47 @@
                              </div>
                          </div>
                      </div>
-                     <button type="submit" id="submit" style="color: black;"class="appointment-btn btn">Submit</button>
+                     <button type="submit" id="submit" style="color: black;" class="appointment-btn">Submit</button>
                  </form>
                  
-                 <div id="formMessage1" style="display: none; margin-top: 20px;"></div>
+                 <div id="formMessage" style="display: none; margin-top: 20px;"></div>
                  
                  <script>
-                     document.getElementById('contactForm1').addEventListener('submit', async function(event) {
-                         event.preventDefault(); // Prevent the form from submitting normally
-                         const form = event.target;
-                         const formData = new FormData(form);
-                 
-                         try {
-                             const response = await fetch(form.action, {
-                                 method: form.method,
-                                 body: formData,
-                                 headers: {
-                                     'Accept': 'application/json'
-                                 }
-                             });
-                 
-                             const result = await response.json();
-                 
-                             let messageBox = document.getElementById('formMessage');
-                             if (response.ok) {
-                                 messageBox.style.color = 'green';
-                                 messageBox.innerText = 'Success: Your message has been sent!';
-                             } else {
-                                 messageBox.style.color = 'red';
-                                 messageBox.innerText = `Error: ${result.message || 'There was an error sending your message.'}`;
-                             }
-                             messageBox.style.display = 'block';
-                         } catch (error) {
-                             let messageBox = document.getElementById('formMessage1');
-                             messageBox.style.color = 'red';
-                             messageBox.innerText = 'Error: Something went wrong while submitting the form.';
-                             messageBox.style.display = 'block';
-                         }
-                     });
+                   document.getElementById('contactForm').addEventListener('submit', async function(event) {
+ event.preventDefault(); // Prevent the form from submitting normally
+ const form = event.target;
+ const formData = new FormData(form);
+
+ try {
+     const response = await fetch(form.action, {
+         method: form.method,
+         body: formData,
+         headers: {
+             'Accept': 'application/json'
+         }
+     });
+
+     const result = await response.json();
+
+     let messageBox = document.getElementById('formMessage');
+     if (response.ok) {
+         messageBox.style.color = 'green';
+         messageBox.innerText = 'Success: Your message has been sent!';
+         form.reset(); // Optionally reset the form
+     } else {
+         messageBox.style.color = 'red';
+         messageBox.innerText = `Error: ${result.message || 'There was an error sending your message.'}`;
+     }
+     messageBox.style.display = 'block';
+ } catch (error) {
+     let messageBox = document.getElementById('formMessage');
+     messageBox.style.color = 'red';
+     messageBox.innerText = 'Error: Something went wrong while submitting the form.';
+     messageBox.style.display = 'block';
+ }
+});
+
                  </script>
-                 
                  
                  
                
@@ -833,76 +834,77 @@
                         married life will be successful.
                      </p>
                      <h4 class="comment-title">LEAVE A COMMENT</h4>
-                   
-                        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form blog-model-form" id="contactForm2">
-                           <input type="hidden" name="access_key" value="f7c8963e-b81b-442e-8841-236aaa885308">
-                           <input type="hidden" name="recaptcha" value="your-recaptcha-token">
-                           <input type="text" name="honeypot" style="display:none">
+                     <form action="https://api.web3forms.com/submit" method="POST" class="contact-form2" id="contactForm2">
+                        <input type="hidden" name="access_key" value="f7c8963e-b81b-442e-8841-236aaa885308">
+                        <input type="hidden" name="recaptcha" value="your-recaptcha-token">
+                        <input type="text" name="honeypot" style="display:none">
+                    
                         <div class="row">
-                           <div class="col-lg-6 col-md-6">
-                              <div class="form-group mb-0">
-                                 <input type="text" placeholder="Name" name="name">
-                              </div>
-                           </div>
-                           <div class="col-lg-6 col-md-6">
-                              <div class="form-group mb-0">
-                                 <input type="email" placeholder="Email">
-                                 <small class="form-text text-muted"></small>
-                              </div>
-                           </div>
-                           <div class="col-lg-12 col-md-12">
-                              <div class="form-group mb-0">
-                                 <input type="tel" placeholder="Phone">
-                              </div>
-                           </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group mb-0">
+                                    <input type="text" placeholder="Name" name="name" id="name" autocomplete="off" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group mb-0">
+                                    <input type="email" id="emailHelp" name="email" placeholder="Email" autocomplete="off" required>
+                                    <small class="form-text text-muted"></small>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="form-group mb-0">
+                                    <input type="tel" placeholder="Phone" name="phone" id="phone" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group mb-0">
+                                    <textarea placeholder="Message" rows="3" name="message" id="comments"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" id="submit" style="color: black;" class="appointment-btn">Submit</button>
+                    </form>
+                    
+                    <div id="formMessage" style="display: none; margin-top: 20px;"></div>
+                    
+                    <script>
+                      document.getElementById('contactForm2').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+    const form = event.target;
+    const formData = new FormData(form);
 
-                        </div>
-                        <div class="row">
-                           <div class="col-lg-12">
-                              <div class=" form-group mb-0">
-                                 <textarea placeholder="Message" rows="3" name="comments"></textarea>
-                              </div>
-                           </div>
-                        </div>
-                        <button type="submit" class="appointment-btn btn">Submit</button>
-                     </form>
-                     <div id="formMessage2" style="display: none; margin-top: 20px;"></div>
-                 
-                     <script>
-                         document.getElementById('contactForm2').addEventListener('submit', async function(event) {
-                             event.preventDefault(); // Prevent the form from submitting normally
-                             const form = event.target;
-                             const formData = new FormData(form);
-                     
-                             try {
-                                 const response = await fetch(form.action, {
-                                     method: form.method,
-                                     body: formData,
-                                     headers: {
-                                         'Accept': 'application/json'
-                                     }
-                                 });
-                     
-                                 const result = await response.json();
-                     
-                                 let messageBox = document.getElementById('formMessage');
-                                 if (response.ok) {
-                                     messageBox.style.color = 'green';
-                                     messageBox.innerText = 'Success: Your message has been sent!';
-                                 } else {
-                                     messageBox.style.color = 'red';
-                                     messageBox.innerText = `Error: ${result.message || 'There was an error sending your message.'}`;
-                                 }
-                                 messageBox.style.display = 'block';
-                             } catch (error) {
-                                 let messageBox = document.getElementById('formMessage2');
-                                 messageBox.style.color = 'red';
-                                 messageBox.innerText = 'Error: Something went wrong while submitting the form.';
-                                 messageBox.style.display = 'block';
-                             }
-                         });
-                     </script>
-                     
+    try {
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        const result = await response.json();
+
+        let messageBox = document.getElementById('formMessage2');
+        if (response.ok) {
+            messageBox.style.color = 'green';
+            messageBox.innerText = 'Success: Your message has been sent!';
+            form.reset(); // Optionally reset the form
+        } else {
+            messageBox.style.color = 'red';
+            messageBox.innerText = `Error: ${result.message || 'There was an error sending your message.'}`;
+        }
+        messageBox.style.display = 'block';
+    } catch (error) {
+        let messageBox = document.getElementById('formMessage2');
+        messageBox.style.color = 'red';
+        messageBox.innerText = 'Error: Something went wrong while submitting the form.';
+        messageBox.style.display = 'block';
+    }
+});
+
+                    </script>
                      
                   </div>
                </div>
@@ -937,76 +939,77 @@
                         successful.
                      </p>
                      <h4 class="comment-title">LEAVE A COMMENT</h4>
-                  
-                        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form blog-model-form" id="contactForm3">
-                           <input type="hidden" name="access_key" value="f7c8963e-b81b-442e-8841-236aaa885308">
-                           <input type="hidden" name="recaptcha" value="your-recaptcha-token">
-                           <input type="text" name="honeypot" style="display:none">
+                     <form action="https://api.web3forms.com/submit" method="POST" class="contact-form3" id="contactForm3">
+                        <input type="hidden" name="access_key" value="f7c8963e-b81b-442e-8841-236aaa885308">
+                        <input type="hidden" name="recaptcha" value="your-recaptcha-token">
+                        <input type="text" name="honeypot" style="display:none">
+                    
                         <div class="row">
-                           <div class="col-lg-6 col-md-6">
-                              <div class="form-group mb-0">
-                                 <input type="text" placeholder="Name" name="name">
-                              </div>
-                           </div>
-                           <div class="col-lg-6 col-md-6">
-                              <div class="form-group mb-0">
-                                 <input type="email" placeholder="Email">
-                                 <small class="form-text text-muted"></small>
-                              </div>
-                           </div>
-                           <div class="col-lg-12 col-md-12">
-                              <div class="form-group mb-0">
-                                 <input type="tel" placeholder="Phone">
-                              </div>
-                           </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group mb-0">
+                                    <input type="text" placeholder="Name" name="name" id="name" autocomplete="off" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group mb-0">
+                                    <input type="email" id="emailHelp" name="email" placeholder="Email" autocomplete="off" required>
+                                    <small class="form-text text-muted"></small>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="form-group mb-0">
+                                    <input type="tel" placeholder="Phone" name="phone" id="phone" required>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
-                           <div class="col-lg-12">
-                              <div class=" form-group mb-0">
-                                 <textarea placeholder="Message" rows="3" name="comments"></textarea>
-                              </div>
-                           </div>
+                            <div class="col-lg-12">
+                                <div class="form-group mb-0">
+                                    <textarea placeholder="Message" rows="3" name="message" id="comments"></textarea>
+                                </div>
+                            </div>
                         </div>
-                        <button type="submit" class="appointment-btn btn">Submit</button>
-                     </form>
+                        <button type="submit" id="submit" style="color: black;" class="appointment-btn">Submit</button>
+                    </form>
+                    
+                    <div id="formMessage3" style="display: none; margin-top: 20px;"></div>
+                    
+                    <script>
+                      document.getElementById('contactForm3').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+    const form = event.target;
+    const formData = new FormData(form);
 
-                     <div id="formMessage3" style="display: none; margin-top: 20px;"></div>
-                 
-                     <script>
-                         document.getElementById('contactForm3').addEventListener('submit', async function(event) {
-                             event.preventDefault(); // Prevent the form from submitting normally
-                             const form = event.target;
-                             const formData = new FormData(form);
-                     
-                             try {
-                                 const response = await fetch(form.action, {
-                                     method: form.method,
-                                     body: formData,
-                                     headers: {
-                                         'Accept': 'application/json'
-                                     }
-                                 });
-                     
-                                 const result = await response.json();
-                     
-                                 let messageBox = document.getElementById('formMessage');
-                                 if (response.ok) {
-                                     messageBox.style.color = 'green';
-                                     messageBox.innerText = 'Success: Your message has been sent!';
-                                 } else {
-                                     messageBox.style.color = 'red';
-                                     messageBox.innerText = `Error: ${result.message || 'There was an error sending your message.'}`;
-                                 }
-                                 messageBox.style.display = 'block';
-                             } catch (error) {
-                                 let messageBox = document.getElementById('formMessage3');
-                                 messageBox.style.color = 'red';
-                                 messageBox.innerText = 'Error: Something went wrong while submitting the form.';
-                                 messageBox.style.display = 'block';
-                             }
-                         });
-                     </script>
-                     
+    try {
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        const result = await response.json();
+
+        let messageBox = document.getElementById('formMessage3');
+        if (response.ok) {
+            messageBox.style.color = 'green';
+            messageBox.innerText = 'Success: Your message has been sent!';
+            form.reset(); // Optionally reset the form
+        } else {
+            messageBox.style.color = 'red';
+            messageBox.innerText = `Error: ${result.message || 'There was an error sending your message.'}`;
+        }
+        messageBox.style.display = 'block';
+    } catch (error) {
+        let messageBox = document.getElementById('formMessage3');
+        messageBox.style.color = 'red';
+        messageBox.innerText = 'Error: Something went wrong while submitting the form.';
+        messageBox.style.display = 'block';
+    }
+});
+
+                    </script>
                      
                   </div>
                </div>
@@ -1040,75 +1043,77 @@
                         find out the truth on your behalf without the other person knowing.
                      </p>
                      <h4 class="comment-title">LEAVE A COMMENT</h4>
-                 
-                        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form blog-model-form" id="contactForm4">
-                           <input type="hidden" name="access_key" value="f7c8963e-b81b-442e-8841-236aaa885308">
-                           <input type="hidden" name="recaptcha" value="your-recaptcha-token">
-                           <input type="text" name="honeypot" style="display:none">
+                     <form action="https://api.web3forms.com/submit" method="POST" class="contact-form4" id="contactForm4">
+                        <input type="hidden" name="access_key" value="f7c8963e-b81b-442e-8841-236aaa885308">
+                        <input type="hidden" name="recaptcha" value="your-recaptcha-token">
+                        <input type="text" name="honeypot" style="display:none">
+                    
                         <div class="row">
-                           <div class="col-lg-6 col-md-6">
-                              <div class="form-group mb-0">
-                                 <input type="text" placeholder="Name" name="name">
-                              </div>
-                           </div>
-                           <div class="col-lg-6 col-md-6">
-                              <div class="form-group mb-0">
-                                 <input type="email" placeholder="Email">
-                                 <small class="form-text text-muted"></small>
-                              </div>
-                           </div>
-                           <div class="col-lg-12 col-md-12">
-                              <div class="form-group mb-0">
-                                 <input type="tel" placeholder="Phone">
-                              </div>
-                           </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group mb-0">
+                                    <input type="text" placeholder="Name" name="name" id="name" autocomplete="off" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="form-group mb-0">
+                                    <input type="email" id="emailHelp" name="email" placeholder="Email" autocomplete="off" required>
+                                    <small class="form-text text-muted"></small>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
+                                <div class="form-group mb-0">
+                                    <input type="tel" placeholder="Phone" name="phone" id="phone" required>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
-                           <div class="col-lg-12">
-                              <div class=" form-group mb-0">
-                                 <textarea placeholder="Message" rows="3" name="comments"></textarea>
-                              </div>
-                           </div>
+                            <div class="col-lg-12">
+                                <div class="form-group mb-0">
+                                    <textarea placeholder="Message" rows="3" name="message" id="comments"></textarea>
+                                </div>
+                            </div>
                         </div>
-                        <button type="submit" class="appointment-btn btn">Submit</button>
-                     </form>
-                     <div id="formMessage4" style="display: none; margin-top: 20px;"></div>
-                 
-                     <script>
-                         document.getElementById('contactForm4').addEventListener('submit', async function(event) {
-                             event.preventDefault(); // Prevent the form from submitting normally
-                             const form = event.target;
-                             const formData = new FormData(form);
-                     
-                             try {
-                                 const response = await fetch(form.action, {
-                                     method: form.method,
-                                     body: formData,
-                                     headers: {
-                                         'Accept': 'application/json'
-                                     }
-                                 });
-                     
-                                 const result = await response.json();
-                     
-                                 let messageBox = document.getElementById('formMessage');
-                                 if (response.ok) {
-                                     messageBox.style.color = 'green';
-                                     messageBox.innerText = 'Success: Your message has been sent!';
-                                 } else {
-                                     messageBox.style.color = 'red';
-                                     messageBox.innerText = `Error: ${result.message || 'There was an error sending your message.'}`;
-                                 }
-                                 messageBox.style.display = 'block';
-                             } catch (error) {
-                                 let messageBox = document.getElementById('formMessage4');
-                                 messageBox.style.color = 'red';
-                                 messageBox.innerText = 'Error: Something went wrong while submitting the form.';
-                                 messageBox.style.display = 'block';
-                             }
-                         });
-                     </script>
-                     
+                        <button type="submit" id="submit" style="color: black;" class="appointment-btn">Submit</button>
+                    </form>
+                    
+                    <div id="formMessage4" style="display: none; margin-top: 20px;"></div>
+                    
+                    <script>
+                      document.getElementById('contactForm4').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+    const form = event.target;
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        const result = await response.json();
+
+        let messageBox = document.getElementById('formMessage4');
+        if (response.ok) {
+            messageBox.style.color = 'green';
+            messageBox.innerText = 'Success: Your message has been sent!';
+            form.reset(); // Optionally reset the form
+        } else {
+            messageBox.style.color = 'red';
+            messageBox.innerText = `Error: ${result.message || 'There was an error sending your message.'}`;
+        }
+        messageBox.style.display = 'block';
+    } catch (error) {
+        let messageBox = document.getElementById('formMessage4');
+        messageBox.style.color = 'red';
+        messageBox.innerText = 'Error: Something went wrong while submitting the form.';
+        messageBox.style.display = 'block';
+    }
+});
+
+                    </script>
                      
                   </div>
                </div>
