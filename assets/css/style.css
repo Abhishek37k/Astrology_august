@@ -1958,7 +1958,9 @@ body {
     padding-bottom: 20px;
 
 }
-
+#heading-testimonials{
+  color: #FCA61F;font-size: 60px;font-weight: bold;padding-bottom: 20px;
+}
 @media (max-width: 720px) {
   .swiper-slide {
     width: 100%;
@@ -1975,13 +1977,11 @@ body {
 }
 
   .banner-left-con h1{
-    font-size: 35px;
+    font-size: 30px;
   }
 
   .banner-left-con p{
     text-align: justify;
-
-
 
   }
 
@@ -2010,10 +2010,9 @@ body {
   background:none;
  
 }
-.generic-title h1{
-font-size: 55px;
+#get-in-touch{
+  font-size: 40px;
 }
-
 
 
   #contactForm input{
@@ -2034,13 +2033,21 @@ box-shadow: none;
     box-shadow: 0 0 12px 0 #eee;
     border-radius: 8px;
 }
+.generic-title h1{
+  font-size: 50px  !important;
+  }
+  #heading-testimonials{
+    font-size: 50px;
+  }
 
 }
 .blog-model-con .contact-form input, .blog-model-con .contact-form textarea {
   box-shadow:none;
+  color: black;
 }
 .blog-model-con .contact-form input:hover, .blog-model-con .contact-form textarea:hover {
   box-shadow: 1px 6px 16px 0 #fca61f;
+  color: black;
 }
 
 
