@@ -1324,10 +1324,10 @@ body {
   font-weight: 900;
 }
 
-.carousel-control-next {
-  left: 114px;
+/* .carousel-control-next {
+  left: -20px;
   right: initial;
-}
+} */
 
 .tastimonials-con::after {
   content: "";
@@ -1814,7 +1814,7 @@ body {
 }
 
 .about-us p {
-  text-align: justify;
+  text-align: center;
   /* Justify text for better readability */
 }
 
@@ -2129,14 +2129,23 @@ body {
     padding-bottom: 20px;
 
 }
-#heading-testimonials{
-  color: #FCA61F;font-size: 60px;font-weight: bold;padding-bottom: 20px;
+#testimonials h6 {
+  color: #FCA61F;padding-bottom: 50px;
+  margin: 0 20px;
+  font-size: 50px;
 }
 
 
 
 
 @media (max-width: 720px) {
+
+
+  #testimonials h6 {
+    color: #FCA61F;padding-bottom: 50px;
+    font-size: 20px;
+  }
+  
   .swiper-slide {
     width: 100%;
 
@@ -2149,6 +2158,37 @@ body {
 
   .mobile-slider {
     display: block;
+}
+.carousel-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff; /* Text color */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  width: 100%; /* Adjust width as needed */
+}
+
+.carousel-caption h5 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.carousel-caption p {
+  font-size: 1rem;
+  margin: 0;
+}
+.text-content {
+  text-align: center;    font-family: "Lato", sans-serif;
+  padding: 15px 10px; /* Add space between the image and the text */
+  color: #fff; /* White text */
+
+  background-color: rgba(0, 0, 0, 0.7); /* Optional: Add a background behind the text */
+  border-radius: 10px; /* Rounded corners for the text box */
+  margin-top: 10px; /* Space above the text */
 }
 
   .banner-left-con h1{
@@ -2216,10 +2256,9 @@ box-shadow: none;
   font-size: 50px  !important;
   }
 
-
-
-  #heading-testimonials{
-    font-size: 50px;
+  .service-con::after {
+  
+    background:none;
   }
 
 }
@@ -2233,3 +2272,117 @@ box-shadow: none;
 }
 
 
+
+.container {
+  width: 100%; /* Adjust the width as needed */
+  max-width: 1200px; /* Optional: set a maximum width for larger screens */
+  margin: 0 auto; /* Center the container */
+  padding: 0 15px; /* Add some padding on the left and right */
+}
+
+.review-cards-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping to the next line if needed */
+  justify-content: space-between;
+  margin: -10px; /* Offset margin from the cards */
+}
+
+.review-card {
+  background-color: #fff;
+  border-radius: 10px;
+  color: #333;
+  padding: 20px;
+  margin: 10px; /* Margin between cards */
+  width: calc(25% - 20px); /* Adjust width to fit 4 cards in a row */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user-img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+}
+
+.username {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.review-text {
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .review-cards-container {
+      flex-direction: column; /* Stack cards vertically on mobile */
+      align-items: center; /* Center cards horizontally */
+  }
+
+  .review-card {
+      width: 100%; /* Make each card take up the full width */
+      margin: 10px 0; /* Add margin between stacked cards */
+  }
+
+
+  #customerReview{
+    padding-top:50px ;
+    padding-bottom:50px ;
+    font-size: 40px;
+  }
+}
+
+
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: auto;
+  color: #000;
+}
+
+.carousel-control-prev {
+  left: 25px;
+}
+
+.carousel-control-next {
+  right: -25px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none;
+}
+
+.carousel-control-prev i,
+.carousel-control-next i {
+  font-size: 24px;
+}
+
+
+.fa, .fab, .fad, .fal, .far, .fas {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 2;
+}
+
+
+@media only screen and (max-width: 991px) {
+  #banner-right-img {
+      transform: translatex(0);
+      animation: rotate 25s linear infinite;
+  }
+}
