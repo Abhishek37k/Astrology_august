@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     const { name, emailHelp, phone, subject, comments } = req.body;
 
     const msg = {
-      to: 'aaasthadixit@gmail.com',
+      to: 'satheeforever01@gmail.com',
       from: 'your-verified-sender@example.com', // Must be verified in SendGrid
       subject: 'Inquiry From Contact Page',
       text: `
